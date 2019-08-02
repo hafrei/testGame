@@ -1,2 +1,13 @@
-game:
-	g++ gw.cpp -o gw -I include -L lib -l SDL2-2.0.0
+PROG = swing02
+CC = gcc
+
+include common.mk
+
+CXXFLAGS += `sdl2-config --cflags`
+CXXFLAGS += -g -lefence
+
+LDFLAGS += `sdl2-config --libs` -lSDL2_mixer -lSDL2_image -lSDL2_ttf -lm
+
+# linking the program.
+$(PROG): $(OBJS)
+	$(CC) -o $@ $(OBJS) $(LDFLAGS)
