@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 
   initSDL();
 
-  atexit(cleanup);
+  atexit(cleanUp);
   
   while(1){
     prepareScene();

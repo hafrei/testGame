@@ -32,7 +32,7 @@ void initSDL(void)
   }
 }
 
-void cleanup(void)
+void cleanUp(void)
 {
   SDL_DestroyRenderer(app.renderer);
 
