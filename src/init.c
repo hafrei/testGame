@@ -25,11 +25,13 @@ void initSDL(void)
 
   app.renderer = SDL_CreateRenderer(app.window, -1, rendererFlags);
 
-  
   if (!app.renderer) {
     printf("Failed to create renderer %s\n", SDL_GetError());
     exit(1);
   }
+
+  //IMG_Init(IMG_INIT_PNG|IMG_INIT_JPG);
+   IMG_Init(IMG_INIT_PNG);
 }
 
 void cleanUp(void)
