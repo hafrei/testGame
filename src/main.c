@@ -1,5 +1,25 @@
 #include "main.h"
 
+void processInput(void)
+{
+  if(app.up)
+  {
+    player.y -= 4;
+  }
+    if(app.down)
+  {
+    player.y += 4;
+  }
+    if(app.left)
+  {
+    player.x -= 4;
+  }
+    if(app.right)
+  {
+    player.x += 4;
+  }
+}
+
 int main(int argc, char *argv[])
 {
   memset(&app, 0, sizeof(App));
@@ -13,15 +33,15 @@ int main(int argc, char *argv[])
 
   if (player.texture == NULL)
   {
-    printf( "Failed to load texture image!\n" );
+    SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Failed to load texture image!\n" );
   }
-
-  atexit(cleanUp);
 
   while(1){
     prepareScene();
 
     doInput();
+
+    processInput();
 
     drawTexture(player.texture, player.x, player.y);
 
@@ -29,6 +49,8 @@ int main(int argc, char *argv[])
 
     SDL_Delay(16);
   }
+
+  atexit(cleanUp);
 
   return 0;
 }

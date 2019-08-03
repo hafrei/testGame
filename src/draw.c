@@ -19,7 +19,7 @@ SDL_Texture *loadTexture(char *filename)
 
   if( loadedSurface == NULL ) 
   { 
-    printf( "Unable to load image %s! SDL_image Error: %s\n", filename, IMG_GetError() ); 
+    SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Unable to load image %s! SDL_image Error: %s\n", filename, IMG_GetError() ); 
   } 
   else 
   {
@@ -29,7 +29,7 @@ SDL_Texture *loadTexture(char *filename)
 
   if( texture == NULL ) 
   { 
-    printf( "Unable to load image %s! SDL_image Error: %s\n", filename, IMG_GetError() ); 
+    SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Unable to load image %s! SDL_image Error: %s\n", filename, IMG_GetError() ); 
   } 
 
   SDL_FreeSurface(loadedSurface);
