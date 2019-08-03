@@ -1,4 +1,4 @@
-PROG = swing02
+PROG = Swingan
 CC = gcc
 
 include common.mk

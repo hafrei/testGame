@@ -16,7 +16,8 @@ void initSDL(void)
   SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
 
   
-  if (!app.window) {
+  if (!app.window) 
+  {
     printf("Failed to open window %d x %d: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError());
     exit(1);
   }
@@ -25,13 +26,13 @@ void initSDL(void)
 
   app.renderer = SDL_CreateRenderer(app.window, -1, rendererFlags);
 
-  if (!app.renderer) {
+  if (!app.renderer) 
+  {
     printf("Failed to create renderer %s\n", SDL_GetError());
     exit(1);
   }
 
-  //IMG_Init(IMG_INIT_PNG|IMG_INIT_JPG);
-   IMG_Init(IMG_INIT_PNG);
+  IMG_Init(IMG_INIT_PNG|IMG_INIT_JPG);
 }
 
 void cleanUp(void)
@@ -39,6 +40,8 @@ void cleanUp(void)
   SDL_DestroyRenderer(app.renderer);
 
   SDL_DestroyWindow(app.window);
+
+  IMG_Quit();
 
   SDL_Quit();
 }

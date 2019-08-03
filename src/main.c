@@ -11,8 +11,13 @@ int main(int argc, char *argv[])
   player.y = 100;
   player.texture = loadTexture("resources/EyeMiddle.png");
 
+  if (player.texture == NULL)
+  {
+    printf( "Failed to load texture image!\n" );
+  }
+
   atexit(cleanUp);
-  
+
   while(1){
     prepareScene();
 
@@ -24,6 +29,6 @@ int main(int argc, char *argv[])
 
     SDL_Delay(16);
   }
-  
+
   return 0;
 }
