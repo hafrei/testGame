@@ -19,7 +19,11 @@ void keyDown(SDL_KeyboardEvent *event)
     if(event->keysym.sym == SDLK_RIGHT)
     {
       app.right = 1;
-    }  
+    }
+    if(event->keysym.sym == SDLK_SPACE)
+    {
+      app.fire = 1;
+    }
   }
 }
 
@@ -42,7 +46,11 @@ void keyUp(SDL_KeyboardEvent *event)
     if(event->keysym.sym == SDLK_RIGHT)
     {
       app.right = 0;
-    }  
+    }
+    if(event->keysym.sym == SDLK_SPACE)
+    {
+      app.fire = 0;
+    }
   }
 }
 

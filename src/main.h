@@ -10,3 +10,4 @@ extern void drawTexture(SDL_Texture *texture, int x, int y);
 
 App app;
 Entity player;
+Entity shot;

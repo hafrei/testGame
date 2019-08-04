@@ -6,17 +6,25 @@ void processInput(void)
   {
     player.y -= 4;
   }
-    if(app.down)
+  if(app.down)
   {
     player.y += 4;
   }
-    if(app.left)
+  if(app.left)
   {
     player.x -= 4;
   }
-    if(app.right)
+  if(app.right)
   {
     player.x += 4;
+  }
+  if(app.fire && shot.hp == 0)
+  {
+    shot.x = player.x;
+    shot.y = player.y;
+    shot.dx = 16;
+    shot.dy = 0;
+    shot.hp = 1;
   }
 }
 
@@ -24,12 +32,16 @@ int main(int argc, char *argv[])
 {
   memset(&app, 0, sizeof(App));
   memset(&player, 0, sizeof(Entity));
+  memset(&shot, 0, sizeof(Entity));
 
   initSDL();
 
   player.x = 100;
   player.y = 100;
+  player.hp = 10;
+
   player.texture = loadTexture("resources/EyeMiddle.png");
+  shot.texture = loadTexture("resources/Shot.png");
 
   if (player.texture == NULL)
   {
@@ -41,9 +53,20 @@ int main(int argc, char *argv[])
 
     doInput();
 
+    player.x += player.dx;
+    player.y += player.dy;
+
     processInput();
 
+    shot.x += shot.dx;
+    shot.y += shot.dy;
+
     drawTexture(player.texture, player.x, player.y);
+    
+    if (shot.hp > 0)
+    {
+      drawTexture(shot.texture, shot.x, shot.y);
+    }
 
     presentScene();
 
