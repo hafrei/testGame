@@ -2,11 +2,6 @@
 typedef struct App {
   SDL_Renderer *renderer;
   SDL_Window *window;
-  int up;
-  int down;
-  int left;
-  int right;
-  int fire;
 } App;
 
 typedef struct Entity {
@@ -17,3 +12,12 @@ typedef struct Entity {
   int dy;
   int hp;
 } Entity;
+
+typedef struct Player {
+  Entity en;
+  int up;
+  int down;
+  int left;
+  int right;
+  int fire;
+} Player;

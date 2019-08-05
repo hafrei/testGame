@@ -6,23 +6,23 @@ void keyDown(SDL_KeyboardEvent *event)
   {
     if(event->keysym.sym == SDLK_UP)
     {
-      app.up = 1;
+      player.up = 1;
     }
     if(event->keysym.sym == SDLK_DOWN)
     {
-      app.down = 1;
+      player.down = 1;
     }
     if(event->keysym.sym == SDLK_LEFT)
     {
-      app.left = 1;
+      player.left = 1;
     }
     if(event->keysym.sym == SDLK_RIGHT)
     {
-      app.right = 1;
+      player.right = 1;
     }
     if(event->keysym.sym == SDLK_SPACE)
     {
-      app.fire = 1;
+      player.fire = 1;
     }
   }
 }
@@ -33,23 +33,23 @@ void keyUp(SDL_KeyboardEvent *event)
   {
     if(event->keysym.sym == SDLK_UP)
     {
-      app.up = 0;
+      player.up = 0;
     }
     if(event->keysym.sym == SDLK_DOWN)
     {
-      app.down = 0;
+      player.down = 0;
     }
     if(event->keysym.sym == SDLK_LEFT)
     {
-      app.left = 0;
+      player.left = 0;
     }
     if(event->keysym.sym == SDLK_RIGHT)
     {
-      app.right = 0;
+      player.right = 0;
     }
     if(event->keysym.sym == SDLK_SPACE)
     {
-      app.fire = 0;
+      player.fire = 0;
     }
   }
 }

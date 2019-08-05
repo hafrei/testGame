@@ -2,26 +2,26 @@
 
 void processInput(void)
 {
-  if(app.up)
+  if(player.up)
   {
-    player.y -= 4;
+    player.en.y -= 4;
   }
-  if(app.down)
+  if(player.down)
   {
-    player.y += 4;
+    player.en.y += 4;
   }
-  if(app.left)
+  if(player.left)
   {
-    player.x -= 4;
+    player.en.x -= 4;
   }
-  if(app.right)
+  if(player.right)
   {
-    player.x += 4;
+    player.en.x += 4;
   }
-  if(app.fire && shot.hp == 0)
+  if(player.fire && shot.hp == 0)
   {
-    shot.x = player.x;
-    shot.y = player.y;
+    shot.x = player.en.x;
+    shot.y = player.en.y;
     shot.dx = 16;
     shot.dy = 0;
     shot.hp = 1;
@@ -31,19 +31,19 @@ void processInput(void)
 int main(int argc, char *argv[])
 {
   memset(&app, 0, sizeof(App));
-  memset(&player, 0, sizeof(Entity));
   memset(&shot, 0, sizeof(Entity));
+  memset(&player, 0, sizeof(Player));
 
   initSDL();
 
-  player.x = 100;
-  player.y = 100;
-  player.hp = 10;
+  player.en.x = 100;
+  player.en.y = 100;
+  player.en.hp = 10;
 
-  player.texture = loadTexture("resources/EyeMiddle.png");
+  player.en.texture = loadTexture("resources/EyeMiddle.png");
   shot.texture = loadTexture("resources/Shot.png");
 
-  if (player.texture == NULL)
+  if (player.en.texture == NULL)
   {
     SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Failed to load texture image!\n" );
   }
@@ -53,15 +53,15 @@ int main(int argc, char *argv[])
 
     doInput();
 
-    player.x += player.dx;
-    player.y += player.dy;
+    player.en.x += player.en.dx;
+    player.en.y += player.en.dy;
 
     processInput();
 
     shot.x += shot.dx;
     shot.y += shot.dy;
 
-    drawTexture(player.texture, player.x, player.y);
+    drawTexture(player.en.texture, player.en.x, player.en.y);
     
     if (shot.hp > 0)
     {
